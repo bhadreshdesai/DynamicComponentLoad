@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Link, Route } from "react-router-dom";
-import DynamicComponentLoader from "./components/DynamicComponentLoader";
+import DynamicComponentLoader from "./DynamicComponentLoader";
 
 function DynamicRoute() {
   return <Route path="/component" component={DynamicComponentLoader} />;
