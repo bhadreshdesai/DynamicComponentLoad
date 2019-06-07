@@ -1,2 +1,0 @@
-# DynamicComponentLoad
-Created with CodeSandbox
