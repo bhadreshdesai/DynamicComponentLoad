@@ -18,6 +18,9 @@ function App() {
           <li>
             <Link to="/component/C2">C2</Link>
           </li>
+          <li>
+            <Link to="/component/C3">C3</Link>
+          </li>
         </ul>
         <DynamicRoute />
       </BrowserRouter>
