@@ -1,34 +1,5 @@
 import React, { lazy, Suspense } from "react";
 
-/*
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
-    console.log(error);
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, info) {
-    // You can also log the error to an error reporting service
-    console.log(error);
-    console.log(info);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      // You can render any custom fallback UI
-      this.setState({ hasError: false });
-      return <h1>Something went wrong.</h1>;
-    }
-    return this.props.children;
-  }
-}
-*/
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -36,6 +7,7 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
+    error["shouldIgnore"] = true;
     // Catch errors in any components below and re-render with error message
     this.setState({
       error: error,
@@ -63,7 +35,11 @@ class ErrorBoundary extends React.Component {
   }
 }
 class DynamicComponentLoader extends React.Component {
-  state = { errorBoundaryKey: 0 };
+  constructor(props) {
+    super(props);
+    this.state = { errorBoundaryKey: 0 };
+  }
+
   clearErrorBoundary = () =>
     this.setState(prevState => ({
       errorBoundaryKey: prevState.errorBoundaryKey + 1
